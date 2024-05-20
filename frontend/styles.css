@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    margin: 20px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+main {
+    margin-top: 20px;
+}
+
+.parameters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.parameters div {
+    display: flex;
+    flex-direction: column;
+    width: 18%;
+}
+
+.parameters label {
+    margin-bottom: 5px;
+}
+
+.parameters input {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.image-input label {
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+
+.image-input input {
+    display: none;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.output {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.output div {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.output label {
+    margin-bottom: 5px;
+}
+
+.output img {
+    max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chaos Function - 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <select id="dropdown">
+                <option value="circle-map">Circle Map</option>
+                <option value="gauss-map">Gauss Map</option>
+                <option value="circle-gauss-seq">Circle & Gauss Map (Sequential)</option>
+                <option value="circle-gauss-com">Circle & Gaus Map (Composition)</option>
+            </select>
+            <h1>Circle & Gauss Map-Based Image Encryption</h1>
+        </header>
+        <main>
+            <div class="parameters">
+                <div>
+                    <label for="x0">Initial Value</label>
+                    <input type="text" inputmode="decimal" 
+                    id="x0" name="x0" 
+                    pattern="[0-9]*[.,]?[0-9]*">
+                </div>
+                <div>
+                    <label for="alpha">&alpha;</label>
+                    <input type="text" inputmode="decimal" 
+                    id="alpha" name="alpha" 
+                    pattern="[0-9]*[.,]?[0-9]*">
+                </div>
+                <div>
+                    <label for="beta">&beta;</label>
+                    <input type="text" inputmode="decimal" 
+                    id="beta" name="beta" 
+                    pattern="[0-9]*[.,]?[0-9]*">
+                </div>
+                <div>
+                    <label for="Omega">&Omega;</label>
+                    <input type="text" inputmode="decimal" 
+                    id="Omega" name="Omega" 
+                    pattern="[0-9]*[.,]?[0-9]*">
+                </div>
+                <div>
+                    <label for="K">K</label>
+                    <input type="text" inputmode="decimal" 
+                    id="K" name="K" 
+                    pattern="[0-9]*[.,]?[0-9]*">
+                </div>
+            </div>
+            <div class="actions">
+                <div class="image-input">
+                    <label for="imageUpload">Add Image</label>
+                    <input type="file" id="imageUpload" accept="image/*">
+                </div>
+                <button id="runEncrypt">Encrypt</button>
+                <button id="runDecrypt">Decrypt</button>
+            </div>
+            <div class="output">
+                <div>
+                    <label for="originalImage">Below are the original image</label>
+                    <img id="originalImage" alt="Original Image will appear here">
+                </div>
+                <div>
+                    <label for="processedImage">Below are the processed image</label>
+                    <img id="processedImage" alt="Processed Image will appear here">
+                </div>
+                <div id="executionTimeContainer">
+                    <label for="executionTime">Execution Time: </label>
+                    <span id="executionTime"></span>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
