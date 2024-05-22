@@ -19,6 +19,10 @@ document.getElementById('runEncrypt').addEventListener('click', function() {
         processedImage.src = `data:image/jpeg;base64,${data.encrypted_image}`;
         const execTimeElement = document.getElementById('executionTime');
         execTimeElement.textContent = `${data.execution_time.toFixed(2)} seconds`;
+        const rmseElement = document.getElementById('rmse');
+        rmseElement.textContent = `${data.calculated_rmse.toFixed(2)} seconds`;
+        const psnrElement = document.getElementById('psnr');
+        psnrElement.textContent = `${data.calculated_psnr} seconds`
     })
     .catch(error => console.error('Error:', error));
 });
@@ -44,6 +48,10 @@ document.getElementById('runDecrypt').addEventListener('click', function() {
         processedImage.src = `data:image/jpeg;base64,${data.decrypted_image}`;
         const execTimeElement = document.getElementById('executionTime');
         execTimeElement.textContent = `${data.execution_time.toFixed(2)} seconds`;
+        const rmseElement = document.getElementById('rmse');
+        rmseElement.textContent = `${data.calculated_rmse.toFixed(2)} seconds`;
+        const psnrElement = document.getElementById('psnr');
+        psnrElement.textContent = `${data.calculated_psnr} seconds`
     })
     .catch(error => console.error('Error:', error));
 });
