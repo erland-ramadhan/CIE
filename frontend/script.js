@@ -51,7 +51,7 @@ document.getElementById('runDecrypt').addEventListener('click', function() {
         const rmseElement = document.getElementById('rmse');
         rmseElement.textContent = `${data.calculated_rmse.toFixed(2)}`;
         const psnrElement = document.getElementById('psnr');
-        psnrElement.textContent = `${data.calculated_psnr}`
+        psnrElement.textContent = `${data.calculated_psnr.toFixed(2)}`
     })
     .catch(error => console.error('Error:', error));
 });

@@ -86,6 +86,10 @@ button {
     margin-bottom: 5px;
 }
 
+.output span {
+    margin-bottom: 5px;
+}
+
 .output img {
     max-width: 100%;
     height: auto;
