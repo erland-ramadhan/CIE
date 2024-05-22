@@ -20,9 +20,9 @@ document.getElementById('runEncrypt').addEventListener('click', function() {
         const execTimeElement = document.getElementById('executionTime');
         execTimeElement.textContent = `${data.execution_time.toFixed(2)} seconds`;
         const rmseElement = document.getElementById('rmse');
-        rmseElement.textContent = `${data.calculated_rmse.toFixed(2)} seconds`;
+        rmseElement.textContent = `${data.calculated_rmse.toFixed(2)}`;
         const psnrElement = document.getElementById('psnr');
-        psnrElement.textContent = `${data.calculated_psnr} seconds`
+        psnrElement.textContent = `${data.calculated_psnr.toFixed(2)}`
     })
     .catch(error => console.error('Error:', error));
 });
@@ -49,9 +49,9 @@ document.getElementById('runDecrypt').addEventListener('click', function() {
         const execTimeElement = document.getElementById('executionTime');
         execTimeElement.textContent = `${data.execution_time.toFixed(2)} seconds`;
         const rmseElement = document.getElementById('rmse');
-        rmseElement.textContent = `${data.calculated_rmse.toFixed(2)} seconds`;
+        rmseElement.textContent = `${data.calculated_rmse.toFixed(2)}`;
         const psnrElement = document.getElementById('psnr');
-        psnrElement.textContent = `${data.calculated_psnr} seconds`
+        psnrElement.textContent = `${data.calculated_psnr}`
     })
     .catch(error => console.error('Error:', error));
 });
