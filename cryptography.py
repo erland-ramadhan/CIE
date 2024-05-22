@@ -22,11 +22,13 @@ def bin_array_to_int(bin_array):
 
 def calculate_rmse(image1, image2):
     """Calculates the Root Mean Square Error (RMSE) between two images."""
-    return np.sqrt(np.mean((image1 - image2) ** 2))
+    # return np.sqrt(np.mean((image1 - image2) ** 2))
+    return np.sqrt(np.mean(np.subtract(image1, image2) ** 2))
 
 def calculate_psnr(image1, image2):
     """Calculates the Peak Signal-to-Noise Ratio (PSNR) between two images."""
-    mse = np.mean((image1 - image2) ** 2)
+    # mse = np.mean((image1 - image2) ** 2)
+    mse = np.mean(np.subtract(image1, image2) ** 2)
     if mse == 0:
         return float('inf')
     max_pixel = 255.0
