@@ -51,7 +51,7 @@ def generate_keystream(func, size, *args):
         # elif func == 'circle-gauss-com':
             x = composed_map(x, alpha, beta, omega, K)
 
-        keystream.append(int(x * 1000) % 256)
+        keystream.append(int(x * 1e6) % 256)
 
     return np.array(keystream, dtype=np.uint8).reshape(size)
 
