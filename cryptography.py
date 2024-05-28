@@ -92,7 +92,7 @@ def decrypt(image_matrix, func, *args):
     if func == 'circle-gauss-seq':
         image_gauss = decrypt(image_matrix, 'gauss-map', *args)
         return decrypt(image_gauss, 'circle-map', *args)
-    els:
+    else:
         size = image_matrix.shape
         length = np.prod(size)
 
