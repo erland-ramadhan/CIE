@@ -61,16 +61,30 @@ def encrypt(image_matrix, func, *args):
         return encrypt(image_circle, 'gauss-map', *args)
     else:
         size = image_matrix.shape
-        keystream = generate_keystream(func, size, *args)
-        encrypted_mat = np.zeros_like(image_matrix)
+        length = np.prod(size)
 
-        for i in range(size[0]):
-            for j in range(size[1]):
-                for k in range(size[2]):
-                    image_mat_bin = int_to_bin_array(image_matrix[i, j, k])
-                    keystream_bin = int_to_bin_array(keystream[i, j, k])
-                    encrypted_bin = np.bitwise_xor(image_mat_bin, keystream_bin)
-                    encrypted_mat[i, j, k] = bin_array_to_int(encrypted_bin)
+        keystream = generate_keystream(func, size, *args)
+        image_flat = image_matrix.flatten()
+        encrypted_flat = [np.bitwise_xor(image_flat[0], keystream[0])]
+
+        i = 0
+        while i < (length - 1):
+            result_ = np.bitwise_xor(image_flat[i], keystream[i])
+            result = np.bitwise_xor(result_, encrypted_flat[-1])
+            encrypted_flat.append(result)
+            i += 1
+
+        # encrypted_mat = np.zeros_like(image_matrix)
+
+        # for i in range(size[0]):
+        #     for j in range(size[1]):
+        #         for k in range(size[2]):
+        #             image_mat_bin = int_to_bin_array(image_matrix[i, j, k])
+        #             keystream_bin = int_to_bin_array(keystream[i, j, k])
+        #             encrypted_bin = np.bitwise_xor(image_mat_bin, keystream_bin)
+        #             encrypted_mat[i, j, k] = bin_array_to_int(encrypted_bin)
+
+        encrypted_mat = encrypted_flat.reshape(size)
 
         return encrypted_mat
 
@@ -78,17 +92,29 @@ def decrypt(image_matrix, func, *args):
     if func == 'circle-gauss-seq':
         image_gauss = decrypt(image_matrix, 'gauss-map', *args)
         return decrypt(image_gauss, 'circle-map', *args)
-    else:
+    els:
         size = image_matrix.shape
-        keystream = generate_keystream(func, size, *args)
-        decrypted_mat = np.zeros_like(image_matrix)
+        length = np.prod(size)
 
-        for i in range(size[0]):
-            for j in range(size[1]):
-                for k in range(size[2]):
-                    image_mat_bin = int_to_bin_array(image_matrix[i, j, k])
-                    keystream_bin = int_to_bin_array(keystream[i, j, k])
-                    decrypted_bin = np.bitwise_xor(image_mat_bin, keystream_bin)
-                    decrypted_mat[i, j, k] = bin_array_to_int(decrypted_bin)
+        keystream = generate_keystream(func, size, *args)
+        image_flat = image_matrix.flatten()
+        decrypted_flat = [np.bitwise_xor(image_flat[0], keystream[0])]
+
+        i = 0
+        while i < (length - 1):
+            result_ = np.bitwise_xor(image_flat[i], keystream[i])
+            result = np.bitwise_xor(result_, decrypted_flat[-1])
+            decrypted_flat.append(result)
+            i += 1
+
+        # for i in range(size[0]):
+        #     for j in range(size[1]):
+        #         for k in range(size[2]):
+        #             image_mat_bin = int_to_bin_array(image_matrix[i, j, k])
+        #             keystream_bin = int_to_bin_array(keystream[i, j, k])
+        #             decrypted_bin = np.bitwise_xor(image_mat_bin, keystream_bin)
+        #             decrypted_mat[i, j, k] = bin_array_to_int(decrypted_bin)
+
+        decrypted_mat = decrypted_map.reshape(size)
 
         return decrypted_mat
