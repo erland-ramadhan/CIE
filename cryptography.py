@@ -53,7 +53,8 @@ def generate_keystream(func, size, *args):
 
         keystream.append(int(x * 1e6) % 256)
 
-    return np.array(keystream, dtype=np.uint8).reshape(size)
+    # return np.array(keystream, dtype=np.uint8).reshape(size)
+    return np.array(keystream, dtype=np.uint8)
 
 def encrypt(image_matrix, func, *args):
     if func == 'circle-gauss-seq':
@@ -84,8 +85,8 @@ def encrypt(image_matrix, func, *args):
         #             encrypted_bin = np.bitwise_xor(image_mat_bin, keystream_bin)
         #             encrypted_mat[i, j, k] = bin_array_to_int(encrypted_bin)
 
+        encrypted_flat = np.array(encrypted_flat)
         encrypted_mat = encrypted_flat.reshape(size)
-
         return encrypted_mat
 
 def decrypt(image_matrix, func, *args):
@@ -115,6 +116,7 @@ def decrypt(image_matrix, func, *args):
         #             decrypted_bin = np.bitwise_xor(image_mat_bin, keystream_bin)
         #             decrypted_mat[i, j, k] = bin_array_to_int(decrypted_bin)
 
+        decrypted_flat = np.array(decrypted_flat)
         decrypted_mat = decrypted_map.reshape(size)
 
         return decrypted_mat
