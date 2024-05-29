@@ -57,8 +57,8 @@ def encrypt(image_matrix, func, *args):
         image_flat = image_matrix.flatten()
         encrypted_flat = [np.bitwise_xor(image_flat[0], keystream[0])]
 
-        i = 0
-        while i < (length - 1):
+        i = 1
+        while i < length:
             result_ = np.bitwise_xor(image_flat[i], keystream[i])
             result = np.bitwise_xor(result_, encrypted_flat[-1])
             encrypted_flat.append(result)
@@ -80,10 +80,10 @@ def decrypt(image_matrix, func, *args):
         image_flat = image_matrix.flatten()
         decrypted_flat = [np.bitwise_xor(image_flat[0], keystream[0])]
 
-        i = 0
-        while i < (length - 1):
+        i = 1
+        while i < length:
             result_ = np.bitwise_xor(image_flat[i], keystream[i])
-            result = np.bitwise_xor(result_, decrypted_flat[-1])
+            result = np.bitwise_xor(result_, image_flat[i-1])
             decrypted_flat.append(result)
             i += 1
 
