@@ -55,17 +55,14 @@ def encrypt(image_matrix, func, *args):
 
         keystream = generate_keystream(func, size, *args)
         image_flat = image_matrix.flatten()
-        encrypted_flat = np.array([np.bitwise_xor(image_flat[0], keystream[0])])
+
+        encrypted_flat = np.bitwise_xor(image_flat, keystream)
 
         i = 1
         while i < length:
-            result_ = np.bitwise_xor(image_flat[i], keystream[i])
-            result = np.bitwise_xor(result_, encrypted_flat[-1])
-            encrypted_flat = np.append(encrypted_flat, [result])
-            # encrypted_flat.append(result)
+            encrypted_flat[i] = np.bitwise_xor(encrypted_flat[i], encrypted_flat[i-1])
             i += 1
 
-        # encrypted_flat = np.array(encrypted_flat)
         encrypted_mat = encrypted_flat.reshape(size)
         return encrypted_mat
 
@@ -79,20 +76,10 @@ def decrypt(image_matrix, func, *args):
 
         keystream = generate_keystream(func, size, *args)
         image_flat = image_matrix.flatten()
-        decrypted_flat = np.array([np.bitwise_xor(image_flat[0], keystream[0])])
 
-        result_ = np.bitwise_xor(image_flat[1:], image_flat[0:(length-1)])
-        result = np.bitwise_xor(result_, keystream[1:])
-        decrypted_flat = np.append(decrypted_flat, result)
+        decrypted_flat = np.bitwise_xor(image_flat, keystream)
+        decrypted_flat[1:] = np.bitwise_xor(decrypted_flat[1:], image_flat[0:(length-1)])
 
-        # i = 1
-        # while i < length:
-        #     result_ = np.bitwise_xor(image_flat[i], image_flat[i-1])
-        #     result = np.bitwise_xor(result_, keystream[i])
-        #     decrypted_flat.append(result)
-        #     i += 1
-
-        # decrypted_flat = np.array(decrypted_flat)
         decrypted_mat = decrypted_flat.reshape(size)
 
         return decrypted_mat
