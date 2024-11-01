@@ -1,0 +1,8 @@
+name: chaos-im-enc
+channels:
+  - conda-forge
+dependencies:
+  - Flask
+  - opencv-python-headless
+  - numpy
+  - gunicorn
