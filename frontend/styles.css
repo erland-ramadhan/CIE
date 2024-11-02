@@ -47,11 +47,18 @@ main {
     font-size: 16px;
 }
 
-.actions {
+.actions, .output {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-start; /* Align items to the start */
+    gap: 20px; /* Add consistent spacing between items */
     margin-bottom: 20px;
+}
+
+.actions div, .output div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Left-align items within each section */
+    width: 30%; /* Make each section item take up equal space */
 }
 
 .image-input label {
@@ -65,32 +72,18 @@ main {
 }
 
 button {
-    padding: 10px 20px;
+    padding: 5px 10px;
     font-size: 16px;
     cursor: pointer;
+    align-self: flex-start; /* Align button to the left */
 }
 
-.output {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.output div {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-}
-
-.output label {
-    margin-bottom: 5px;
-}
-
-.output span {
-    margin-bottom: 5px;
+.output label, .output span, .output button {
+    margin-bottom: 5px; /* Consistent spacing */
 }
 
 .output img {
     max-width: 100%;
     height: auto;
+    margin-bottom: 5px;
 }
