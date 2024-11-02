@@ -66,9 +66,6 @@ def encrypt_image():
     end_time = time.time()
     execution_time = end_time - start_time
 
-    encryption_rmse = calculate_rmse(image_matrix, encrypted_image)
-    encryption_psnr = calculate_psnr(image_matrix, encrypted_image)
-
     # Read the encrypted image as binary and convert it to base64 string
     with open(encrypted_image_path, 'rb') as image_file:
         encoded_image = base64.b64encode(image_file.read()).decode('utf-8')
@@ -80,8 +77,6 @@ def encrypt_image():
     json_output = {
         'encrypted_image': encoded_image,
         'execution_time': execution_time,
-        'calculated_rmse': encryption_rmse,
-        'calculated_psnr': encryption_psnr
     }
 
     return jsonify(json_output)
@@ -131,9 +126,6 @@ def decrypt_image():
     end_time = time.time()
     execution_time = end_time - start_time
 
-    decryption_rmse = calculate_rmse(image_matrix, decrypted_image)
-    decryption_psnr = calculate_psnr(image_matrix, decrypted_image)
-
     # Read the encrypted image as binary and convert it to base64 string
     with open(decrypted_image_path, 'rb') as image_file:
         decoded_image = base64.b64encode(image_file.read()).decode('utf-8')
@@ -145,8 +137,50 @@ def decrypt_image():
     json_output = {
         'decrypted_image': decoded_image,
         'execution_time': execution_time,
-        'calculated_rmse': decryption_rmse,
-        'calculated_psnr': decryption_psnr
+    }
+
+    return jsonify(json_output)
+
+@app.route('/compare', methods=['POST'])
+def compare_Img():
+    # Check if a file was uploaded
+    if ('org' not in request.files) or ('de' not in request.files) :
+        return jsonify({'error': 'image/s should be uploaded!'})
+
+    org = request.files['org']
+    de = request.files['de']
+
+    if (org.filename == '') or (de.filename == ''):
+        return jsonify({'error': 'No image/s selected'})
+
+    # Check file extension
+    if not (allowed_file(org.filename) and allowed_file(de.filename)):
+        return jsonify({'error': 'Image type not allowed'})
+
+    # Save the uploaded file temporarily
+    org_filename = secure_filename(org.filename)
+    de_filename = secure_filename(de.filename)
+    org_path = os.path.join(app.config['UPLOAD_FOLDER'], org_filename)
+    de_path = os.path.join(app.config['UPLOAD_FOLDER'], de_filename)
+    org.save(org_path)
+    de.save(de_path)
+
+    org_matrix = cv2.imread(org_path)
+    de_matrix = cv2.imread(de_path)
+
+    rmse = calculate_rmse(org_matrix, de_matrix)
+    psnr = calculate_psnr(org_matrix, de_matrix)
+
+    if psnr == float('inf'):
+        psnr = "Infinity"
+
+    # Delete the temporary uploaded and encrypted image files
+    os.remove(org_path)
+    os.remove(de_path)
+
+    json_output = {
+        'calculated_rmse': rmse,
+        'calculated_psnr': psnr,
     }
 
     return jsonify(json_output)
