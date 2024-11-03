@@ -51,7 +51,7 @@ The tutorial video on how to use the web app is provided below.
 Below are the diagram on how the encryption and decryption works.
 
 **Encryption**
-<img src="./schemes/encryption.svg">
+<img src="./schemes/encryption.png">
 
 **Decryption**
-<img src="./schemes/decryption.svg">
+<img src="./schemes/decryption.png">
