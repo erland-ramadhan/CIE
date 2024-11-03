@@ -39,12 +39,13 @@ To launch the web application, execute the following command in the terminal/con
 python backend.py
 ```
 
-Once the `Debugger is activated!` message appear in the terminal, open the browser (Chrome, Firefox, Safari, etc.) and go to `localhost:8000`. The web application is now ready to use!
+Once the `Debugger is activated!` message appear in the terminal, open the browser (Chrome, Firefox, Safari, etc.) and go to `localhost:5000`. The web application is now ready to use!
 
 ## Demo
 
 The tutorial video on how to use the web app is provided below.
 
+https://github.com/user-attachments/assets/5c35ac4a-2c2c-430d-88e7-cac730418338
 
 ## How does this repo work?
 
