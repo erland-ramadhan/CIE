@@ -69,7 +69,7 @@ From the previous equation, the original image can be restored by the following 
 $$I(i)=O(i)\oplus O(i-1)\oplus K(i)$$
 
 ### Chaos function
-The behavior of a chaos function determined by its initial value. The chaos functions used in this repo are as follows.
+The behavior of a chaos function is determined by its initial value. The chaos functions used in this repo are as follows.
 
 **Gauss Iterated Map**
 
@@ -81,4 +81,4 @@ $$x_{n+1}=x_n+\Omega-\frac{K}{2\pi}\sin\left(2\pi x_n\right)\mod 1$$
 
 **Circle-Gauss Iterated Composition Map**
 
-$$(f\circ g)=x_{n+1}=\exp \left(-\alpha \Bigl(x_n + \Omega-\frac{K}{2\pi}\sin\left(2\pi x_n\right)\mod 1\Bigr)^2\right)+\beta$$
+$$(f\circ g)=x_{n+1}=\exp \left(-\alpha \left(x_n + \Omega-\frac{K}{2\pi}\sin\left(2\pi x_n\right)\mod 1\right)^2\right)+\beta$$
