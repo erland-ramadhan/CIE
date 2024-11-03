@@ -67,3 +67,15 @@ $$O(i)=I(i)\oplus K(i)\oplus O(i-1)$$
 From the previous equation, the original image can be restored by the following equation.
 
 $$I(i)=O(i)\oplus O(i-1)\oplus K(i)$$
+
+### Chaos function
+The behavior of a chaos function determined by its initial value. The chaos functions used in this repo are as follows.
+
+**Gauss Iterated Map**
+The next value of Gauss iterated map are given as follows.
+
+$$x_{n+1}=\exp \left(-\alpha x_n^2\right)+\beta$$
+
+**Circle Map**
+
+$$x_{n+1}=x_n+\Omega-\frac{K}{2\pi}\sin\left(2\pi x_n\right)\mod 1$$
