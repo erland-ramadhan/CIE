@@ -72,10 +72,13 @@ $$I(i)=O(i)\oplus O(i-1)\oplus K(i)$$
 The behavior of a chaos function determined by its initial value. The chaos functions used in this repo are as follows.
 
 **Gauss Iterated Map**
-The next value of Gauss iterated map are given as follows.
 
 $$x_{n+1}=\exp \left(-\alpha x_n^2\right)+\beta$$
 
 **Circle Map**
 
 $$x_{n+1}=x_n+\Omega-\frac{K}{2\pi}\sin\left(2\pi x_n\right)\mod 1$$
+
+**Circle-Gauss Iterated Composition Map**
+
+$$(f\circ g)=x_{n+1}=\exp \left(-\alpha \left(x_n + \Omega-\frac{K}{2\pi}\sin\left(2\pi x_n\right)\mod 1\right)^2\right)+\beta$$
