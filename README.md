@@ -81,4 +81,4 @@ $$x_{n+1}=x_n+\Omega-\frac{K}{2\pi}\sin\left(2\pi x_n\right)\mod 1$$
 
 **Circle-Gauss Iterated Composition Map**
 
-$$(f\circ g)=x_{n+1}=\exp \left(-\alpha \left(x_n + \Omega-\frac{K}{2\pi}\sin\left(2\pi x_n\right)\mod 1\right)^2\right)+\beta$$
+$$(f\circ g)=x_{n+1}=\exp \left(-\alpha \Bigl(x_n + \Omega-\frac{K}{2\pi}\sin\left(2\pi x_n\right)\mod 1\Bigr)^2\right)+\beta$$
