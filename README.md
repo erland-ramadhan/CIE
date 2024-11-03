@@ -53,15 +53,17 @@ Below are the diagram on how the encryption and decryption works.
 **Encryption**
 <img src="./schemes/encryption.png">
 
-Assume that $I$ is original image, $K$ is keystream, and $O$ is encrypted image. To add layer of security, rather than
+Assume that $I$ is original image, $K$ is keystream, and $O$ is encrypted image. To add more layer of security, rather than just
 
 $$O(i)=I(i)\oplus K(i)$$
 
 the output is given by
 
-$$O(i)=I(i)\oplus K(i)\oplus O(i-1)$$
+$$O(i)=I(i)\oplus K(i)\oplus O(i-1)$$.
 
 **Decryption**
 <img src="./schemes/decryption.png">
 
+From the previous equation, the original image can be restored by the following equation.
 
+$$I(i)=O(i)\oplus O(i-1)\oplus K(i)$$
