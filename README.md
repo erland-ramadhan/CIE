@@ -57,9 +57,9 @@ Assume that $I$ is original image, $K$ is keystream, and $O$ is encrypted image.
 
 $$O(i)=I(i)\oplus K(i)$$
 
-the output is given by
+the output is give as follows.
 
-$$O(i)=I(i)\oplus K(i)\oplus O(i-1)$$.
+$$O(i)=I(i)\oplus K(i)\oplus O(i-1)$$
 
 **Decryption**
 <img src="./schemes/decryption.png">
